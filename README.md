@@ -188,18 +188,3 @@ Keep MAX_COMPANIES and MAX_CONTACTS_PER_COMPANY small during initial testing to 
 
 ---
 
-## Rubric Mapping
-
-This table maps the project requirements to where they are implemented:
-
-| Requirement | Implementation |
-|---|---|
-| One domain in, all stages fire automatically | pipeline.js chains all four stages |
-| Correct auth per API | Each stage module handles its own auth (Ocean header, Prospeo X-KEY, Eazyreach two-step Bearer, Brevo api-key) |
-| Pagination | Ocean: size parameter; Prospeo: page loop with pagination.total_page |
-| Resilient to partial failures | mapLimit in concurrency.js captures per-item errors; pipeline.js logs and continues |
-| Rate limit handling | http.js retries on 429/5xx with exponential backoff and Retry-After support |
-| Deduplication | dedupe.js applied after each stage on domain, linkedin_url, and email |
-| Safety checkpoint | checkpoint.js prints summary table and requires explicit yes before any send |
-| Dry run and mock modes | --dry-run stops before Stage 4; --mock bypasses all API calls |
-| Personalized email copy | template.js uses first name, company, and title as merge fields |
