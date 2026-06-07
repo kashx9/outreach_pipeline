@@ -1,0 +1,15 @@
+{
+  "name": "outreach-pipeline",
+  "version": "1.0.0",
+  "description": "Automated cold-outreach pipeline: one domain in, personalized emails out.",
+  "type": "module",
+  "bin": { "outreach": "./src/index.js" },
+  "scripts": {
+    "start": "node src/index.js",
+    "mock": "node src/index.js --mock --dry-run"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
