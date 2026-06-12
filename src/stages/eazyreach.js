@@ -72,7 +72,6 @@ export async function resolveEmail(prospect, { mock = false } = {}) {
     data = await doRequest();
   } catch (err) {
     if (err instanceof HttpError && err.status === 401) {
-      // Token expired — clear cache and retry once.
       _tokenPromise = null;
       try {
         data = await doRequest();

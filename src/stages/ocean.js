@@ -9,7 +9,6 @@ import { oceanFixture } from './_fixtures.js';
  *
  * Auth: X-Api-Token header (v3). Never send both header and query param — causes "conflicting tokens" error.
  * Endpoint: POST /v3/search/companies
- * Pagination: size + from offset; searchAfter cursor for deep paging (>10k).
  *
  * @param {string} seedDomain
  * @param {{ mock?: boolean, limit?: number }} [opts]
@@ -25,8 +24,6 @@ export async function findLookalikes(seedDomain, { mock = false, limit = 10 } = 
 
   const url = `${config.ocean.baseUrl}/v3/search/companies`;
 
-  // v3 removed `from` pagination — use searchAfter instead.
-  // minScore is not a valid v3 filter — removed.
   const body = {
     size: limit,
     companiesFilters: {

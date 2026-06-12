@@ -1,7 +1,5 @@
 import 'dotenv/config';
 
-const int = (v, d) => (v ? parseInt(v, 10) : d);
-
 export const config = {
   ocean: {
     token: process.env.OCEAN_API_TOKEN,
@@ -25,9 +23,9 @@ export const config = {
     email: process.env.SENDER_EMAIL || '',
   },
   limits: {
-    maxCompanies: int(process.env.MAX_COMPANIES, 10),
-    maxContactsPerCompany: int(process.env.MAX_CONTACTS_PER_COMPANY, 3),
-    concurrency: int(process.env.REQUEST_CONCURRENCY, 3),
+    maxCompanies: process.env.MAX_COMPANIES,
+    maxContactsPerCompany: process.env.MAX_CONTACTS_PER_COMPANY,
+    concurrency: process.env.REQUEST_CONCURRENCY,
   },
 };
 
